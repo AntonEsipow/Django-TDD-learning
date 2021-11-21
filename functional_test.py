@@ -30,16 +30,18 @@ class NewVisitorTest(unittest.TestCase):
         )
 
         inputbox.send_keys('Купить вагонку')
+        inputbox.send_keys(Keys.ENTER)
+        time.sleep(1)
 
+        inputbox = self.browser.find_element_by_id('id_new_item')
+        inputbox.send_keys('Купить гвозди')
         inputbox.send_keys(Keys.ENTER)
         time.sleep(1)
 
         table = self.browser.find_element_by_id('id_list_table')
         rows = table.find_elements_by_tag_name('tr')
-        self.assertTrue(
-            any(row.text == '1: Купить вагонку' for row in rows),
-            "Новый элемент списка не появился в таблице"
-        )
+        self.assertIn('1: Купить вагонку', [row.text for row in rows])
+        self.assertIn('1: Купить возди', [row.text for row in rows])
 
         self.fail('Закончить тест!')
 
