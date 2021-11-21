@@ -48,7 +48,7 @@ class NewVisitorTest(unittest.TestCase):
         # rows = table.find_elements_by_tag_name('tr')
 
         self.check_for_row_in_list_table('1: Купить вагонку')
-        self.check_for_row_in_list_table('1: Купить возди')
+        self.check_for_row_in_list_table('2: Купить гвозди')
 
         self.fail('Закончить тест!')
 
